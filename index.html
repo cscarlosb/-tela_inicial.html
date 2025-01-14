@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Divertido</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .button-container {
+            position: relative;
+            width: 300px; /* Tamanho definido para ajudar no posicionamento */
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute; /* Necessário para posicionamento dinâmico */
+            transition: all 0.3s ease;
+        }
+        .yes-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .yes-button:hover {
+            background-color: #45a049;
+        }
+        .no-button {
+            background-color: #f44336;
+            color: white;
+        }
+        .no-button:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <h1>Você aceita sair comigo?</h1>
+    <div class="button-container" id="container">
+        <button class="yes-button" id="yesButton" onclick="goToInvitation()">Sim</button>
+        <button class="no-button" id="noButton" onmouseover="moveButton()">Não</button>
+    </div>
+
+    <script>
+        function goToInvitation() {
+            // Redireciona para a página convite_especial.html
+            window.location.href = "convite_especial.html";
+        }
+
+        function moveButton() {
+            const noButton = document.getElementById('noButton');
+            const yesButton = document.getElementById('yesButton');
+            const container = document.getElementById('container');
+
+            const containerRect = container.getBoundingClientRect();
+            const yesRect = yesButton.getBoundingClientRect();
+
+            let newX, newY;
+            do {
+                // Gera coordenadas aleatórias dentro do contêiner
+                newX = Math.random() * (containerRect.width - noButton.offsetWidth);
+                newY = Math.random() * (containerRect.height - noButton.offsetHeight);
+            } while (
+                // Verifica se as novas coordenadas estão sobre o botão "Sim"
+                newX < yesRect.left - containerRect.left + yesRect.width &&
+                newX + noButton.offsetWidth > yesRect.left - containerRect.left &&
+                newY < yesRect.top - containerRect.top + yesRect.height &&
+                newY + noButton.offsetHeight > yesRect.top - containerRect.top
+            );
+
+            // Aplica as novas coordenadas
+            noButton.style.left = `${newX}px`;
+            noButton.style.top = `${newY}px`;
+        }
+    </script>
+</body>
+</html>
