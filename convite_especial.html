@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Especial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ff4d4d; /* Fundo vermelho */
+            color: white;
+            margin: 0;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2); /* Fundo semi-transparente */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        h1 {
+            color: white;
+        }
+        button {
+            background-color: #ff1a75;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #e60063;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+        /* Corações */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff1a75;
+            transform: rotate(45deg);
+            animation: float 5s infinite ease-in-out;
+        }
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff1a75;
+            border-radius: 50%;
+        }
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+        .heart:after {
+            left: -10px;
+            top: 0;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Convite Especial</h1>
+        <p>Escolha uma opção para continuar:</p>
+        <button onclick="showMessage('Que tal tomar um café comigo na segunda para despedir?')">Sair para um café</button>
+        <button onclick="showMessage('Vamos assistir a um filme juntos nessa quinta às 20h!')">Assistir a um filme</button>
+        <button onclick="showMessage('Gostaria de um jantar especial comigo? Que tal às 19h na quarta-feira o restaurante é surpresa?')">Jantar especial</button>
+        <button onclick="showMessage('Vamos dar um passeio no domingo fim de tarde, depois do nosso jantar?')">Passeio no parque</button>
+        <div class="message" id="message"></div>
+    </div>
+
+    <!-- Corações flutuantes -->
+    <div class="heart" style="top: 90%; left: 10%; animation-duration: 5s;"></div>
+    <div class="heart" style="top: 85%; left: 30%; animation-duration: 7s;"></div>
+    <div class="heart" style="top: 95%; left: 50%; animation-duration: 6s;"></div>
+    <div class="heart" style="top: 90%; left: 70%; animation-duration: 8s;"></div>
+    <div class="heart" style="top: 85%; left: 90%; animation-duration: 4.5s;"></div>
+
+    <script>
+        function showMessage(text) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+        }
+    </script>
+</body>
+</html>
